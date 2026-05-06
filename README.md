@@ -19,7 +19,7 @@
 
 ## 📋 Overview
 
-**QuADA-GS** introduces a novel framework for arbitrary-scale image super-resolution by learning to **adaptively allocate Gaussians** across the image, enabling high-quality upscaling at any scale factor without retraining.
+**QuADA-GS** introduces a feed-forward Gaussian Splatting framework for **Arbitrary-Scale Super-Resolution**, leveraging a **Neural Routing Architecture** to adaptively densify primitives based on local structural complexity. By employing **Hierarchical Pointer Convolution** for $O(1)$ spatial communication across irregular topologies, it achieves state-of-the-art perceptual fidelity while maintaining low latency and a minimal memory footprint.
 
 ---
 
@@ -40,8 +40,15 @@ Before running inference, make sure your environment is properly set up:
 git clone https://github.com/your-username/QuADA-GS.git
 cd QuADA-GS
 
+# Install the PyTorch build appropriate for your system. We use the CUDA 12.4 version:
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+
 # Install dependencies
 pip install -r requirements.txt
+
+# Build and install the custom CUDA rasterizer
+cd utils/gs_utils
+python setup_gscuda_adaptive.py install
 ```
 
 ---
@@ -50,7 +57,7 @@ pip install -r requirements.txt
 
 ### 1 — Prepare your dataset
 
-Place your low-resolution benchmark images in a directory of your choice. The pipeline expects the following structure:
+Place your low-resolution images in a directory of your choice. The pipeline expects the following structure:
 
 ```
 your_dataset/
@@ -58,8 +65,6 @@ your_dataset/
 ├── image_002.png
 └── ...
 ```
-
-> **Tip:** The example below uses the **DIV2K 100-image validation set** with bicubic downsampling at arbitrary scale (`AnyScaleTestBicubic`).
 
 ---
 
@@ -69,29 +74,24 @@ Use the following command to run inference with a pretrained model:
 
 ```bash
 python inference/evaluate_inference.py \
-    --path_to_image_dataset "/path/to/your/dataset" \
-    --results-dir /path/to/output/directory \
+    --path_to_image_dataset "/path/to/your_dataset" \
+    --results-dir /path/to/output_directory \
     --pretrained_model RDN_best
 ```
 
-#### Full working example (DIV2K benchmark):
-
-```bash
-python inference/evaluate_inference.py \
-    --path_to_image_dataset "/raid/homes/giulio.federico/DiGT/gaussian_vae/data/benchmarks/AnyScaleTestBicubic/DIV2K100" \
-    --results-dir /raid/homes/giulio.federico/da_eliminare/QuADA-GS/da_el \
-    --pretrained_model RDN_best
-```
+> 💡 **Note:** The pretrained weights will be **downloaded automatically** the first time you run the script — no manual setup required.
 
 ---
 
-### 3 — Arguments reference
+#### Available pretrained models
 
-| Argument | Type | Description |
-|---|---|---|
-| `--path_to_image_dataset` | `str` | Path to the folder containing the input low-resolution images |
-| `--results-dir` | `str` | Directory where super-resolved outputs will be saved |
-| `--pretrained_model` | `str` | Name of the pretrained checkpoint to load (e.g. `RDN_best`) |
+| `--pretrained_model` | Description |
+|---|---|
+| `RDN_best` ⭐ | **Recommended — official model from the paper.** QuADA-GS with RDN as image encoder, obtained after extensive ablation study and careful cost tuning. |
+| `RDN_classic` | QuADA-GS with RDN as image encoder, trained **without cost tuning** — results in a strong quadtree-like topology. |
+| `EDSR` | QuADA-GS with **EDSR** as image encoder, for an alternative backbone comparison. |
+
+> ⭐ If you are unsure which model to use, go with **`RDN_best`**.
 
 ---
 
