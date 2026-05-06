@@ -87,8 +87,8 @@ python inference/evaluate_inference.py \
 
 | `--pretrained_model` | Description |
 |---|---|
-| `RDN_best` ⭐ | **Recommended — official model from the paper.** QuADA-GS with RDN as image encoder, obtained after extensive ablation study and careful cost tuning. |
-| `RDN_classic` | QuADA-GS with RDN as image encoder, trained **without cost tuning** — results in a strong quadtree-like topology. |
+| `RDN_best` ⭐ | **Recommended — official model from the paper.** QuADA-GS with RDN as image encoder, obtained after extensive ablation study and careful level cost tuning. |
+| `RDN_classic` | QuADA-GS with RDN as image encoder, trained using classic level cost (0.0625, 0.25, 1.0) — results in a strong quadtree-like topology. |
 | `EDSR` | QuADA-GS with **EDSR** as image encoder, for an alternative backbone comparison. |
 
 > ⭐ If you are unsure which model to use, go with **`RDN_best`**.
@@ -100,17 +100,16 @@ python inference/evaluate_inference.py \
 After inference completes, the super-resolved images will be saved in the directory specified by `--results-dir`:
 
 ```
-results-dir/
+output_directory/
 ├── image_001_SR.png
 ├── image_002_SR.png
-└── metrics.json       ← PSNR / SSIM summary
 ```
 
 ---
 
 ## 📊 Metrics Evaluation
 
-Once inference is complete and the super-resolved images are saved, you can compute the full suite of image quality metrics (PSNR, SSIM, LPIPS, DISTS) with:
+If you have the relative ground truth, once inference is complete and the super-resolved images are saved, you can compute the full suite of image quality metrics (PSNR, SSIM, LPIPS, DISTS) with:
 
 ```bash
 python inference/compute_metrics.py \
