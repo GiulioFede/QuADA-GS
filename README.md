@@ -84,6 +84,7 @@ python inference/evaluate_inference.py \
 The script processes every LR image in **`your_dataset`** and generates the corresponding HR output in the **`output_directory`** at the specified **`scale_to_evaluate`**.
 
 > 💡 **Note:** The pretrained weights will be **downloaded automatically** the first time you run the script — no manual setup required.
+
 > 💡 **Note:** When dealing with very small inputs (e.g., $32 \times 24$) or extreme scaling ratios, consider raising the $dmax$ for all levels. This adjustment trades off some inference speed to maintain structural continuity, effectively avoiding spatial gaps in the reconstructed image.
 
 ---
