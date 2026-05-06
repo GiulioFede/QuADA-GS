@@ -81,7 +81,6 @@ python inference/evaluate_inference.py \
 
 > 💡 **Note:** The pretrained weights will be **downloaded automatically** the first time you run the script — no manual setup required.
 
----
 
 #### Available pretrained models
 
