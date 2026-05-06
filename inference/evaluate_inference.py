@@ -14,6 +14,7 @@ import torch.nn.functional as F
 import numpy as np
 import math
 import pytorch_lightning as pl
+from utils.model_config import get_and_download_model
 
 
 '''
@@ -88,12 +89,17 @@ class Model_Lighting(pl.LightningModule):
 
 
 def main(args):
+
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
+    # Retrieve local paths and download weights if necessary
+    ckpt_path, arch_name = get_and_download_model(args.pretrained_model)
+
+    # Load the model dynamically based on user choice
     model = Model_Lighting.load_from_checkpoint(
                                 strict=False,
-                                checkpoint_path=args.load_checkpoint,
-                                model_name=args.model,
+                                checkpoint_path=ckpt_path,  
+                                model_name=arch_name,       
                                 map_location=device)
     
     model = model.model
@@ -229,8 +235,6 @@ if __name__ == "__main__":
     parser.add_argument("--path_to_image_dataset", type=str, default="/raid/homes/giulio.federico/DiGT/gaussian_vae/data/benchmarks/AnyScaleTestBicubic/DIV2K100")
     parser.add_argument("--scale_to_evaluate", type=int, choices=[2,3,4,6,8,12,16,24,30], default=12.7) 
     parser.add_argument("--results-dir", type=str, default="/raid/homes/giulio.federico/QuADA-GS/da_eliminare")
-    parser.add_argument("--load_checkpoint", type=str, default="/raid/homes/giulio.federico/DiGT/gaussian_vae/results/063-QuASAR_v2/checkpoints/last-x12_L1_L2_last.ckpt")
-    parser.add_argument("--model", type=str, choices=list(model_versions), default="QuADA_GS_v2")
     parser.add_argument("--type_of_inference", type=str, choices=["parallel"], default="parallel") #TODO "tiling"
     parser.add_argument(
     "--dmax", 
@@ -240,7 +244,14 @@ if __name__ == "__main__":
     help="Determines the rasterization speed for each level. Lower values mean higher speed. "
         "If the input LR is very small and/or the scale is very high, "
         "increase these values of L1 and L2 (dmaxL1>dmaxL2) to avoid holes or artifacts."
-)
+    )
+    parser.add_argument(
+        "--pretrained_model", 
+        type=str, 
+        choices=["RDN_best", "RDN_classic", "EDSR_best"], 
+        default="RDN_best", 
+        help="Select the pre-trained weights to use. They will be downloaded automatically if missing."
+    )
 
     args = parser.parse_args()
     main(args)
