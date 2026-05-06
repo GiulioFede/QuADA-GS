@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🔬 QuADA-GS
+# :page_facing_up: QuADA-GS
 ### Learning to Adaptively Allocate Gaussians for Arbitrary-Scale Image Super-Resolution
 
 <br>
@@ -11,7 +11,7 @@
 
 <br>
 
-<img src="assets/teaser.png" width="100%" alt="QuADA-GS Teaser"/>
+<img src="assets/qualitative_results_8_urban100_4_X12.jpg" width="100%" alt="QuADA-GS Teaser"/>
 
 </div>
 
