@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quada-gs"
+version = "0.1.0"
+description = "QuADA-GS: Learning to Adaptively Allocate Gaussians for Arbitrary-Scale Image Super-Resolution"
+
+[tool.setuptools]
+packages = ["models", "inference", "utils"]
