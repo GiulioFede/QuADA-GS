@@ -1,4 +1,5 @@
-models/main_model.py
+models/main_model.txt
 da_eliminare/
 *.egg-info/
 __pycache__/
+build/

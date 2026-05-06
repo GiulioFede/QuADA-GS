@@ -1,6 +1,6 @@
 
 import argparse
-from models.main_model import model_versions
+from models.quada_gs import QuADA_GS
 import torch
 import os
 import glob
@@ -14,6 +14,38 @@ import torch.nn.functional as F
 import numpy as np
 import math
 import pytorch_lightning as pl
+
+
+'''
+    DETERMINISTIC STRUCTURE MAP
+'''
+def QuADA_GS_v1(**kwargs):
+    return QuADA_GS(**kwargs, 
+                  type_of_image_encoder='rdn')
+
+'''
+    LEARNABLE STRUCTURE MAP with RDN
+'''
+def QuADA_GS_v2(**kwargs):
+    return QuADA_GS(**kwargs, 
+                  type_of_image_encoder='rdn',
+                  use_learnable_structure_map = True)
+
+'''
+    LEARNABLE STRUCTURE MAP with EDSR
+'''
+def QuADA_GS_v3(**kwargs):
+    return QuADA_GS(**kwargs, 
+                  type_of_image_encoder='edsr',
+                  use_learnable_structure_map = True)
+
+
+
+model_versions = {
+    'QuADA_GS_v1': QuADA_GS_v1,
+    'QuADA_GS_v2': QuADA_GS_v2,
+    'QuADA_GS_v3': QuADA_GS_v3
+}
 
 
 

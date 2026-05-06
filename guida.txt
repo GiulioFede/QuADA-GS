@@ -4,7 +4,10 @@
 2) Per evitare problemi di percorsi, esegui dentro QuADA-GS (cartella principale)
     pip install -e .
 
-3) TODO: compilare gs utils (adaptive)
+3) Compilare rasterizzatore
+
+    cd utils/gs_utils
+    python setup_gscuda_adaptive.py install
 
 
 [INFERENZA]
