@@ -77,8 +77,8 @@ python inference/evaluate_inference.py \
     --path_to_image_dataset "/path/to/your_dataset" \
     --results-dir "/path/to/output_directory" \
     --pretrained_model "RDN_best" \
-    --scale_to_evaluate 12 
-    --dmax 0.1 0.1 0.1
+    --scale_to_evaluate s (e.g., 12) \
+    --dmax dl0 dl1 dl2 (e.g., 0.1 0.1 0.1)
 ```
 
 The script processes every LR image in **`your_dataset`** and generates the corresponding HR output in the **`output_directory`** at the specified **`scale_to_evaluate`**.
