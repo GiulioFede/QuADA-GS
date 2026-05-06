@@ -8,7 +8,7 @@ build_path = os.path.join(os.path.split(os.path.abspath(__file__))[0], 'build')
 os.makedirs(build_path, exist_ok=True)
 file_path = os.path.split(os.path.abspath(__file__))[0]
 
-# Assicurati che il modulo gscuda sia compilato con i nuovi file
+
 import gscuda_adaptive
 GSWrapper = gscuda_adaptive
 
