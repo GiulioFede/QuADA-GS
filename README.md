@@ -75,11 +75,16 @@ Use the following command to run inference with a pretrained model:
 ```bash
 python inference/evaluate_inference.py \
     --path_to_image_dataset "/path/to/your_dataset" \
-    --results-dir /path/to/output_directory \
-    --pretrained_model RDN_best
+    --results-dir "/path/to/output_directory" \
+    --pretrained_model "RDN_best" \
+    --scale_to_evaluate 12 
+    --dmax 0.1 0.1 0.1
 ```
 
+The script processes every LR image in **`your_dataset`** and generates the corresponding HR output in the **`output_directory`** at the specified **`scale_to_evaluate`**.
+
 > 💡 **Note:** The pretrained weights will be **downloaded automatically** the first time you run the script — no manual setup required.
+> 💡 **Note:** When dealing with very small inputs (e.g., $32 \times 24$) or extreme scaling ratios, consider raising the $dmax$ for all levels. This adjustment trades off some inference speed to maintain structural continuity, effectively avoiding spatial gaps in the reconstructed image.
 
 ---
 
@@ -95,7 +100,7 @@ python inference/evaluate_inference.py \
 
 ---
 
-### 4 — Output
+### 3 — Output
 
 After inference completes, the super-resolved images will be saved in the directory specified by `--results-dir`:
 
