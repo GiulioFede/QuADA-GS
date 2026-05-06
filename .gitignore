@@ -3,3 +3,4 @@ da_eliminare/
 *.egg-info/
 __pycache__/
 build/
+guida.txt

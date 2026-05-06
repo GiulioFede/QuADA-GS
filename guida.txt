@@ -22,9 +22,4 @@
 2) crea una cartella LR_DIR e inserisci tutte le immagini LR di cui vuoi fare INFERENZA
 3) crea una cartella HR_DIR dove verranno salvate tutte le HR predette
 
-python inference/evaluate_inference.py \
-    --path_to_image_dataset LR_DIR_PATH \
-    --results-dir HR_DIR_PATH \
-    --load_checkpoint PATH_CHECKPOINT \
-    --scale_to_evaluate s \ 
-    --dmax dL0 dL1 dL2
+python inference/evaluate_inference.py --path_to_image_dataset "/raid/homes/giulio.federico/DiGT/gaussian_vae/data/benchmarks/AnyScaleTestBicubic/DIV2K100" --results-dir /raid/homes/giulio.federico/da_eliminare/QuADA-GS/da_el --pretrained_model RDN_best
