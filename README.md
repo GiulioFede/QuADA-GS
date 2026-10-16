@@ -3,8 +3,11 @@
 # :page_facing_up: QuADA-GS
 ### Learning to Adaptively Allocate Gaussians for Arbitrary-Scale Image Super-Resolution
 
+**🎉 Accepted at the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV) 2027**
+
+
 <br>
-[![Paper](https://img.shields.io/badge/Paper-arXiv-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/XXXX.XXXXX)
+[![Paper](https://img.shields.io/badge/Paper-arXiv-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2606.29400)
 [![Project Page](https://img.shields.io/badge/Project-Page-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://your-username.github.io/QuADA-GS/)
 [![GitHub](https://img.shields.io/badge/GitHub-Code-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/your-username/QuADA-GS)
 
