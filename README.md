@@ -25,7 +25,7 @@
 
 ## 📋 Overview
 
-**QuADA-GS** introduces a feed-forward Gaussian Splatting framework for **Arbitrary-Scale Super-Resolution**, leveraging a **Neural Routing Architecture** to adaptively densify primitives based on local structural complexity. By employing **Hierarchical Pointer Convolution** for $O(1)$ spatial communication across irregular topologies, it achieves state-of-the-art perceptual fidelity while maintaining low latency and a minimal memory footprint.
+**QuADA-GS** introduces a feed-forward Gaussian Splatting framework for **Arbitrary-Scale Super-Resolution**, leveraging a **Neural Routing Architecture** to adaptively densify primitives based on local structural complexity. By employing **Hierarchical Pointer Convolution** for $O(1)$ spatial communication across irregular topologies. It establishes the optimal cost-quality trade-off, achieving state-of-the-art results on complex benchmarks while maintaining low latency and a minimal memory footprint.
 
 ---
 
