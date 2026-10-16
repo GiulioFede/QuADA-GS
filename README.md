@@ -184,10 +184,14 @@ QuADA-GS/
 If you find this work useful, please consider citing:
 
 ```bibtex
-@inproceedings{quada_gs,
-  title     = {QuADA-GS: Learning to Adaptively Allocate Gaussians for Arbitrary-Scale Image Super-Resolution},
-  author    = {Your Name et al.},
-  year      = {2025}
+@misc{federico2026adaptivedensificationhighfidelityefficient,
+      title={Adaptive Densification for High-Fidelity and Efficient Sparse Gaussian Splatting in Arbitrary-Scale Super-Resolution}, 
+      author={Giulio Federico and Giuseppe Amato and Claudio Gennaro and Fabio Carrara and Marco Di Benedetto},
+      year={2026},
+      eprint={2606.29400},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2606.29400}, 
 }
 ```
 
